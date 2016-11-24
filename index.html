@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLON - Gods Will Be Watching</title>
+    <script src="lib/phaser.js"></script>
+    <script src="js/preload.js"></script>
+    <script src="js/introduction.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/entities_methods.js"></script>
+    <script src="js/main.js"></script>
+
+    <style>
+        #screen{
+            height: 430px;
+        }
+        canvas{
+            /*ESTAMOS DUPLICANDO EL TAMAÑO DEL JUEGO*/
+            /*PARA MANTENER EL ASPECTO ANGULADO O "PIXELADO" EN CADA NAVEGADOR...*/
+            image-rendering: optimizeSpeed; /*STOP SMOOTHING - GIVE ME SPEED*/
+            image-rendering: -moz-crisp-edges; /*FIREFOX*/
+            image-rendering: -o-crisp-edges; /*OPERA*/
+            image-rendering: -webkit-optimize-contrast; /*CHROME AND SAFARI*/
+            image-rendering: pixelated; /*CHROME*/
+            image-rendering: optimize-contrast; /*Para CSS3*/
+            -ms-interpolation-mode: nearest-neighbor; /*IE8+*/
+            /*transform: scale(2); -> con esto lo haría cada navegador directamente*/
+        }
+    </style>
+</head>
+
+<body>
+    <div id="screen"></div>
+</body>
+</html>
