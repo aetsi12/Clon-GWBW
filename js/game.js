@@ -79,7 +79,7 @@ GWBW.Game.prototype = {
             if(this.entities[q].custom_update) this.entities[q].custom_update();
         }
 
-        this.world.sort("z", Phaser.Group.SORT_ASCENDING); //Todo se pinta en la pantalla de forma ordenada según Z(prioridad).
+        this.world.sort("Z", Phaser.Group.SORT_ASCENDING); //Todo se pinta en la pantalla de forma ordenada según Z(prioridad).
 
         //CURSOR
         this.crosshair.x = Math.floor(this.input.mousePointer.x - 8);
