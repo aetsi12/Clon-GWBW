@@ -3,6 +3,7 @@ GWBW.Game = function(){};
 GWBW.Game.prototype = {
     init: function(wind){
         this.wind = wind;
+        this.fadeAlpha = { value: 1 };
 
         this.entities = [] //Array de entidades!
 
@@ -33,12 +34,34 @@ GWBW.Game.prototype = {
     },
 
     create: function(){
+        //Fade object
+        /*La variable fade es una instancia de la clase Graphics23 de Phaser, la cual nos da acceso al
+        pintado de formas primitivas tales como círculos o rectángulos, casi como si estuviéramos
+        haciéndolo directamente desde JavaScript. De esta forma podemos pintar un recuadro
+        negro que cubra todo el escenario, independientemente de cuál sea su tamaño.*/
+        this.fade = this.game.add.graphics(0,0);
+        this.fade.z = 500;
+        this.fade.beginFill(0x000000, this.fadeAlpha.value);
+        this.fade.drawRect(0,0, this.world.width, this.world.heigth);
+        this.fade.endFill();
+
+        //countdown bitmap text
+        this.countdownTxt = this.add.bitmapText(this.world.centerX, this.world.centerY/2, "minecraft", this.countdown,10);
+        this.countdownTxt.anchor.x = 0.5;
+        this.countdownTxt.smoothed = false;
+        this.countdownTxt.tint = 0xffffff;
+        this.countdownTxt.align = "center";
+        this.countdownTxt.z = 501;
+
+        //Background
         this.add.image(0,0, "fondo");
 
+        //Música
         this.wind.fadeOut(4000); //Para que el sonido vaya fundiendose con la música del juego
         this.music = this.add.audio("bso", 0, true);
         this.music.onDecoded.add(this.startMusic, this); //Al cargar la música llama a startMusic (que la reproduce);
 
+        //Sonidos
         this.stepsSnd = this.add.audio("stepsSnd", 0.1, true);
         this.campfireSnd = this.add.audio("campfireSnd", 0.2, true);
 
@@ -47,7 +70,7 @@ GWBW.Game.prototype = {
         for(var q=0, i=entities.length; q<i; q++){
             var e = entities[q];
             this[e.name] = this.add.sprite(e.x, e.y, e.name); //Añade instancia de clase sprite (en su posición y todo e.e)
-            this[e.name].Z = e.z; //Prioridad de pintado
+            this[e.name].z = e.z; //Prioridad de pintado
             for(var j=0, k=e.anims.length; j<k; j++){ //Añadimos todas las animaciones definidas
                 this[e.name].animations.add(e.anims[j].name, e.anims[j].frames, e.anims[j].rate, e.anims[j].loop);
             }
@@ -67,6 +90,13 @@ GWBW.Game.prototype = {
             this.entities.push(this[e.name]); //Añadimos la entidad al array
             if(this[e.name].custom_init) this[e.name].custom_init(); //Lanzamos su metodo de inicio, si lo tiene.
         }
+        this.add.tween(this.fadeAlpha).to({value:0},2500,Phaser.Easing.Quadratic.InOut, true).onComplete.add(function(){
+            this.countdownTxt.text = "";
+        },this); /*Una instancia de la clase Tween admite, entre otros, el método to21, al cual pasamos como
+        parámetros las propiedades que queremos modificar (“value”), el tiempo de duración de la
+        animación, el tipo de suavizado (“easing”) de la misma, y si debe arrancar automáticamente
+        o no.*/
+
     },
 
     startMusic: function(){
@@ -75,14 +105,23 @@ GWBW.Game.prototype = {
     },
 
     update: function(){
+        //CURSOR
+        this.crosshair.x = Math.floor(this.input.mousePointer.x - 8);
+        this.crosshair.y = Math.floor(this.input.mousePointer.y - 8);
+
         for(var q=0, i=this.entities.length; q<i; q++){ //Llamamos a la función update de cada entidad (si la tiene) cada frame
             if(this.entities[q].custom_update) this.entities[q].custom_update();
         }
 
-        this.world.sort("Z", Phaser.Group.SORT_ASCENDING); //Todo se pinta en la pantalla de forma ordenada según Z(prioridad).
+        this.world.sort("z", Phaser.Group.SORT_ASCENDING); //Todo se pinta en la pantalla de forma ordenada según Z(prioridad).
+    },
 
-        //CURSOR
-        this.crosshair.x = Math.floor(this.input.mousePointer.x - 8);
-        this.crosshair.y = Math.floor(this.input.mousePointer.y - 8);
+    render: function(){
+        if(this.fadeAlpha.value){
+            this.fade.clear();
+            this.fade.beginFill(0x000000, this.fadeAlpha.value);
+            this.fade.drawRect(0, 0, this.world.width, this.world.height);
+            this.fade.endFill();
+        }
     }
 };

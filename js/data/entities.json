@@ -104,6 +104,68 @@
             "update": "campfire_update"
         },
         {
+            "name":     "meat",
+            "x":        9,
+            "y":        159,
+            "z":        11,
+            "anims":    [
+                {
+                    "name":     "meat1",
+                    "frames":   [0],
+                    "rate":     1,
+                    "loop":     false
+                },
+                {
+                    "name":     "meat2",
+                    "frames":   [1],
+                    "rate":     1,
+                    "loop":     false
+                },
+                {
+                    "name":     "meat3",
+                    "frames":   [2],
+                    "rate":     1,
+                    "loop":     false
+                },
+                {
+                    "name":     "meat4",
+                    "frames":   [3],
+                    "rate":     1,
+                    "loop":     false
+                }
+            ],
+            "start":    "meat1",
+            "update":   "meat_update"
+        },
+        {
+            "name":     "radio",
+            "x":        245,
+            "y":        127,
+            "z":        11,
+            "anims":    [
+                {
+                    "name":     "radio1",
+                    "frames":   [0],
+                    "rate":     1,
+                    "loop":     false
+                },
+                {
+                    "name":     "radio2",
+                    "frames":   [1],
+                    "rate":     1,
+                    "loop":     false
+                },
+                {
+                    "name":     "radio3",
+                    "frames":   [2],
+                    "rate":     1,
+                    "loop":     false
+                }
+            ],
+            "start":    "radio1",
+            "update":   "radio_update"
+        },
+        {
             "name": "burden",
             "x": 180,
             "y": 300,
@@ -138,6 +200,262 @@
             "init": "burden_init",
             "update": "burden_update",
             "onclick": "burden_onclick"
+        },
+        {
+            "name": "doctor",
+            "x": 82,
+            "y": 121,
+            "z": 21,
+            "anims": [
+                {
+                    "name":     "idle1",
+                    "frames":   [0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 0, 1, 2, 6, 7, 8, 11, 10, 9, 9, 9, 9, 10, 11, 10, 10, 12, 13, 14, 15, 16],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk1",
+                    "frames":   [3, 4, 5],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle2",
+                    "frames":   [17, 18, 19, 17, 18, 19, 17, 18, 19, 17, 18, 19, 17, 18, 19, 20, 0, 1, 2, 0, 1, 2, 20],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk2",
+                    "frames":   [3, 4, 5],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle3",
+                    "frames":   [21, 22, 21, 22, 21, 22, 21, 22, 21, 22, 21, 22, 21, 22, 21, 22, 21, 22, 23, 24, 24, 24, 24, 24, 23],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk3",
+                    "frames":   [24],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "die",
+                    "frames":   [0, 0, 0, 25, 26, 27, 28],
+                    "rate":     6,
+                    "loop":     false
+                },
+                {
+                    "name":     "infected",
+                    "frames":   [10],
+                    "rate":     0,
+                    "loop":     false
+                }
+            ],
+            "start":    "idle1",
+            "update":   "doctor_update"
+        },
+        {
+            "name":     "soldier",
+            "x":        7,
+            "y":        109,
+            "z":        22,
+            "anims":    [
+                {
+                    "name":     "idle1",
+                    "frames":   [0, 0, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk1",
+                    "frames":   [3, 4],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle2",
+                    "frames":   [6, 6, 6, 6, 6, 6, 6, 6, 7, 8, 9],
+                    "rate":     4,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk2",
+                    "frames":   [5, 6],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle3",
+                    "frames":   [10, 11, 12, 11],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk3",
+                    "frames":   [10, 11, 12, 11],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "die",
+                    "frames":   [0, 0, 0, 0, 13, 14, 15, 16, 17, 18],
+                    "rate":     6,
+                    "loop":     false
+                },
+                {
+                    "name":     "infected",
+                    "frames":   [9],
+                    "rate":     0,
+                    "loop":     false
+                }
+            ],
+            "start":    "idle1",
+            "update":   "soldier_update"
+        },
+        {
+            "name":     "scientist",
+            "x":        234,
+            "y":        105,
+            "z":        22,
+            "anims":    [
+                {
+                    "name":     "idle1",
+                    "frames":   [0, 0, 0, 0, 0, 0, 0, 0, 2, 3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6, 3, 4, 5, 6, 2],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk1",
+                    "frames":   [0, 1],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle2",
+                    "frames":   [7, 8, 9, 10, 11],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk2",
+                    "frames":   [7, 8, 9, 10, 11],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle3",
+                    "frames":   [12, 13, 14, 15],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "talk3",
+                    "frames":   [12, 13, 14, 15],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "die",
+                    "frames":   [0, 0, 0, 0, 16, 17, 18, 19, 20, 21, 19, 20, 21, 19, 20, 21, 19, 20, 21],
+                    "rate":     6,
+                    "loop":     false
+                },
+                {
+                    "name":     "infected",
+                    "frames":   [5],
+                    "rate":     0,
+                    "loop":     false
+                }
+            ],
+            "start":    "idle1",
+            "update":   "scientist_update"
+        },
+        {
+            "name":     "girl",
+            "x":        102,
+            "y":        114,
+            "z":        20,
+            "anims":    [
+                {
+                    "name":     "idle1",
+                    "frames":   [0, 0, 0, 0, 0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle2",
+                    "frames":   [4, 4, 4, 4, 4, 5, 6, 7, 6, 5, 4, 8],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "idle3",
+                    "frames":   [9, 10, 11],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "die",
+                    "frames":   [0, 0, 0, 0, 12, 13, 14],
+                    "rate":     6,
+                    "loop":     false
+                },
+                {
+                    "name":     "infected",
+                    "frames":   [2],
+                    "rate":     0,
+                    "loop":     false
+                }
+            ],
+            "start":    "idle1",
+            "update":   "girl_update"
+        },
+        {
+            "name":     "dog",
+            "x":        9,
+            "y":        142,
+            "z":        21,
+            "anims":    [
+                {
+                    "name":     "idle",
+                    "frames":   [0, 1, 2, 1],
+                    "rate":     4,
+                    "loop":     true
+                },
+                {
+                    "name":     "die",
+                    "frames":   [0, 0, 0, 0, 3, 4, 5, 6],
+                    "rate":     6,
+                    "loop":     false
+                }
+            ],
+            "start":    "idle"
+        },
+        {
+            "name":     "robot",
+            "x":        247,
+            "y":        113,
+            "z":        24,
+            "anims":    [
+                {
+                    "name":     "idle",
+                    "frames":   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 4, 5, 4, 5, 3, 2, 1, 6, 7, 8, 0],
+                    "rate":     6,
+                    "loop":     true
+                },
+                {
+                    "name":     "die",
+                    "frames":   [0, 0, 0, 0, 9, 10, 11, 12, 13, 12, 13, 14, 12, 15, 16, 17, 18, 17, 18, 17, 18, 17, 18, 17, 18],
+                    "rate":     6,
+                    "loop":     false
+                }
+            ],
+            "start":    "idle"
         }
     ]
 }
